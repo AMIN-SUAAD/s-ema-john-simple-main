@@ -25,7 +25,7 @@ const Info = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const rawResponse = await fetch("http://localhost:5000/addOrder", {
+    const rawResponse = await fetch("https://afternoon-anchorage-04509.herokuapp.com/addOrder", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -49,45 +49,55 @@ const Info = () => {
   };
 
   return (
-    <div style={{ marginLeft: "100px" }} data-testid = "info">
-      
-      <h4>Please, fill out this form!</h4>
-      <form onSubmit={handleSubmit}>
-        <input
-          required
-          type="text"
-          name="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          onBlur={(e) => setName(e.target.value)}
-          placeholder="Name"
-        />
-        <br />
-        <input
-          required
-          type="text"
-          name="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onBlur={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-        <br />
-        <input
-          required
-          style={{ width: "500px" }}
-          name="Address"
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          onBlur={(e) => setAddress(e.target.value)}
-          placeholder="Address"
-        />
-        <br />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
-      
+    <div style={{ marginLeft: "100px" }} data-testid="info">
+
+      {!orderPlaced &&
+        <div>
+
+          <h4>Please, fill out this form!</h4>
+          <form onSubmit={handleSubmit}>
+            <input
+              required
+              type="text"
+              name="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              onBlur={(e) => setName(e.target.value)}
+              placeholder="Name"
+            />
+            <br />
+            <input
+              required
+              type="text"
+              name="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+            <br />
+            <input
+              required
+              style={{ width: "500px" }}
+              name="Address"
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              onBlur={(e) => setAddress(e.target.value)}
+              placeholder="Address"
+            />
+            <br />
+            <br />
+            <input type="submit" value="Submit" />
+          </form>
+
+        </div>
+      }
+
+      {
+        orderPlaced && <h4>Order Successful!</h4>
+      }
+
     </div>
   );
 };

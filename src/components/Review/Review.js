@@ -53,18 +53,7 @@ const Review = () => {
             product={pd}
           ></ReviewItem>
         ))}
-        {orderPlaced && (
-          <h3 style={{ marginLeft: "200px", color: "#4BB543" }}>
-            Please, send your address details at shipping@ema-john.com
-          </h3>
-        )}
-        {orderPlaced && (
-          <img
-            style={{ marginLeft: "200px", marginTop: "5px" }}
-            src={happyImage}
-            alt=""
-          />
-        )}
+        
       </div>
 
       <div className="cart-container">
